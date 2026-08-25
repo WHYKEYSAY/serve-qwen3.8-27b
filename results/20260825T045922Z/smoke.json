@@ -1,0 +1,178 @@
+{
+  "native_completion": {
+    "elapsed_s": 4.476,
+    "prompt_tok_s": 50.51051701122055,
+    "decode_tok_s": 63.235592350765856,
+    "predicted_n": 256
+  },
+  "chinese": {
+    "elapsed_s": 5.561,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "MoE 路由负责把每个 token 分发给少数专家，从而决定哪些专家参数会被激活。  \n负载均衡通过约束或调整路由，避免少数专家过热，提升训练稳定性和推理吞吐。  \nCPU 卸载把暂时不用的专家放到 CPU 内存，在路由命中时再换入 GPU，因此它与路由和负载均衡共同决定显存占用、延迟和吞吐。",
+            "reasoning_content": "用户要求：用恰好三句话解释 MoE 路由、负载均衡和 CPU 卸载的关系。需要用中文回答，且必须恰好三句话。需要确保三句话，每句以句号/问号/叹号结束？中文句号算一句。避免分号导致歧义？最好三行或一段，但恰好三个中文句号。内容：MoE路由决定每个token去哪些专家；负载均衡防止少数专家过载，影响训练稳定性和推理吞吐；CPU卸载把不活跃专家/参数放到CPU内存，在需要时按需加载，与路由和负载均衡共同决定显存占用、延迟和吞吐。需要恰好三句话。检查句子：\n1. MoE 路由负责把每个 token 分发给少数专家，从而决定哪些专家参数会被激活。\n2. 负载均衡通过约束或调整路由，避免少数专家过热，提升训练稳定性和推理吞吐。\n3. CPU 卸载把暂时不用的专家放到 CPU 内存，在路由命中时再换入 GPU，因此它与路由和负载均衡共同决定显存占用、延迟和吞吐。\n三句，句号三个。是否“关系”解释清楚？可以。注意“MoE”英文没问题。恰好三句话。不要额外说明。\n"
+          }
+        }
+      ],
+      "created": 1787634696,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 336,
+        "prompt_tokens": 69,
+        "total_tokens": 405,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-Nu26KWyVdaLQXqwgFAYzKbwBAWsaVUab",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 69,
+        "prompt_ms": 141.7,
+        "prompt_per_token_ms": 2.0536231884057967,
+        "prompt_per_second": 486.94424841213834,
+        "predicted_n": 336,
+        "predicted_ms": 5255.608,
+        "predicted_per_token_ms": 15.641690476190476,
+        "predicted_per_second": 63.93170875757857
+      }
+    }
+  },
+  "code": {
+    "elapsed_s": 11.634,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals = sorted(intervals, key=lambda x: x[0])\n    merged = [list(intervals[0])]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\nassert merge_intervals([[1, 3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]\nassert merge_intervals([]) == []\nassert merge_intervals([[1, 4], [4, 5]]) == [[1, 5]]",
+            "reasoning_content": "We need respond to user: \"写 Python 函数 merge_intervals，并给出恰好三个 assert；只输出代码。\" Chinese: Write Python function merge_intervals, and give exactly three assert; only output code.\nNeed output code only. Need likely define function merging intervals. Exactly three assert statements. Need ensure no extra text. Could include asserts. Need maybe tests. Need only code. Need think about requirements: \"给出恰好三个 assert\" means provide exactly three assert statements. So code should contain exactly three lines with assert? Could be assert statements. Need no other assert. Function merge_intervals. Could be:\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals = sorted(intervals, key=lambda x: x[0])\n    merged = [list(intervals[0])]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\nassert merge_intervals([[1,3],[2,6],[8,10],[15,18]]) == [[1,6],[8,10],[15,18]]\nassert merge_intervals([]) == []\nassert merge_intervals([[1,4],[4,5]]) == [[1,5]]\nExactly three assert. Need maybe if intervals are tuples? Return lists. Fine.\nNeed only code. Ensure no comments? okay. Need exactly three assert tokens? The word assert appears three times. Could there be assert in comments? no.\nPotential issue: if intervals contain single element? Not needed.\nNeed maybe type hints? no.\nNeed final only code. Ensure no markdown? \"只输出代码\" likely raw code. We can output code block? That is not pure code? Better no markdown, just code. But final can be plain.\nDouble-check exactly three assert: lines start assert. Good.\nNeed maybe function name merge_intervals. Good.\nCould there be hidden requirement: \"恰好三个 assert\" maybe exactly three assert statements in code. Yes.\nNeed consider if sorted mutates? We assign sorted. Good.\nIf intervals empty returns []. If intervals with negative? works.\nIf intervals are lists, sorted returns list of lists. merged = [list(intervals[0])] okay. If intervals are tuples, returns lists. Assert expects lists. Good.\nCould use [start, end] unpacking if interval length 2. Good.\nNeed final.\n"
+          }
+        }
+      ],
+      "created": 1787634708,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 731,
+        "prompt_tokens": 69,
+        "total_tokens": 800,
+        "prompt_tokens_details": {
+          "cached_tokens": 42
+        }
+      },
+      "id": "chatcmpl-eCDtBGbMv3Of71h1rYCzjQidznsMZcp7",
+      "timings": {
+        "cache_n": 42,
+        "prompt_n": 27,
+        "prompt_ms": 78.484,
+        "prompt_per_token_ms": 2.9068148148148145,
+        "prompt_per_second": 344.01916314153203,
+        "predicted_n": 731,
+        "predicted_ms": 11388.696,
+        "predicted_per_token_ms": 15.579611491108071,
+        "predicted_per_second": 64.18645295299831
+      }
+    }
+  },
+  "tool": {
+    "elapsed_s": 1.377,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The user is asking for the current weather in Toronto. They explicitly stated that I must call the tool and must not guess. Let me call the get_weather tool with city=\"Toronto\".\n",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_weather",
+                  "arguments": "{\"city\":\"Toronto\"}"
+                },
+                "id": "otNbBNkQJNOLiBvT9ycLkiGmW5FJQnGi"
+              }
+            ]
+          }
+        }
+      ],
+      "created": 1787634709,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 316,
+        "total_tokens": 382,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-mGci1mPG0ggHftAC8NnFnwb9f8YuIa1x",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 316,
+        "prompt_ms": 189.516,
+        "prompt_per_token_ms": 0.5997341772151898,
+        "prompt_per_second": 1667.405390573883,
+        "predicted_n": 66,
+        "predicted_ms": 1013.624,
+        "predicted_per_token_ms": 15.357939393939395,
+        "predicted_per_second": 65.112901825529
+      }
+    }
+  },
+  "vision": {
+    "elapsed_s": 9.64,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "这是一幅数字绘画风格的卡通图像，画面由简单的色块和线条构成，边缘略显粗糙。\n\n背景分为上下两部分：上半部分为纯蓝色，下半部分为纯绿色，两者之间以一条不规则的波浪状线条分隔。蓝色区域的左上角和右上角各有一团白色的云朵状图形。\n\n画面中央是一个站立的人物形象。其头部为浅色（米白色）的圆形，脸上有两个蓝色的圆形眼睛，每个眼睛中央有一个黑色小点；眼睛下方有一条向上弯曲的黑色弧线。头部两侧及上方是黄色的头发，向左右两边向上翘起，形成两个尖角状的发束，发束内部各有一块浅黄色的椭圆形色块；头部下方两侧还有向下垂的黄色发梢。\n\n人物躯干穿着一件粉色的连衣裙，裙摆向下展开呈梯形。裙子两侧水平伸出两条浅色的手臂，末端为圆头。裙子下方伸出两条浅色的腿，向下延伸，脚部同样为圆头状。\n\n整体配色为蓝、绿、黄、粉、白、黑几种纯色，无渐变或阴影细节。",
+            "reasoning_content": "用户要求客观描述图片，不猜测看不见的内容。我需要仔细观察图像的每一个元素，用平实的语言描述颜色、形状、位置关系，避免赋予角色情感或背景故事。\n\n观察图像：背景上半部分是蓝色，下半部分是绿色，两者之间有一条不规则的边界，类似天空和草地。蓝色区域左右上角各有一团白色的云朵状图形。\n\n画面中央是一个卡通人物形象。头部是浅色（米白/淡粉白）的圆形脸，脸上有两个蓝色的圆形眼睛，眼睛里有黑色的小点（瞳孔），下方有一条黑色的弧线作为嘴巴，呈微笑状。\n\n头部上方/两侧是黄色的头发，向两边向上翘起，形成两个大的尖角状或翅膀状的发束，发束内部有浅黄色的椭圆形色块。头发下方两侧还有垂下的黄色发梢。\n\n身体部分穿着一件粉色的连衣裙，裙子呈梯形/三角形向下展开。裙子两侧伸出两条浅色的手臂，水平向两边伸展，末端是圆头。\n\n裙子下方伸出两条浅色的腿，向下延伸，脚部也是圆头状。\n\n整体风格是简单的数字绘画/涂鸦风格，边缘略显粗糙，像是用绘图软件绘制的。\n\n我需要客观描述，不猜测性别、年龄、情绪（虽然嘴巴是弧线，但我可以描述为“黑色弧线”或“呈微笑状的弧线”，客观描述形状即可，可以说“一条向上弯曲的黑色弧线”）。\n\n我应组织语言，分层次描述：背景、人物头部、头发、身体四肢。\n\n避免说“这是一个女孩”或“她在草地上玩耍”等推测。可以说“一个卡通人物形象”。\n\n最终输出应为中文，简洁客观。\n"
+          }
+        }
+      ],
+      "created": 1787634719,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 572,
+        "prompt_tokens": 639,
+        "total_tokens": 1211,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-LQLAwbej0Peikx9feIjFTolMys7NMoCQ",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 639,
+        "prompt_ms": 607.834,
+        "prompt_per_token_ms": 0.9512269170579029,
+        "prompt_per_second": 1051.2738675362023,
+        "predicted_n": 572,
+        "predicted_ms": 8860.734,
+        "predicted_per_token_ms": 15.490793706293706,
+        "predicted_per_second": 64.55447144672213
+      }
+    }
+  }
+}

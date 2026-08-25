@@ -11,6 +11,7 @@ exec "$llama_server" \
   --host 127.0.0.1 \
   --port 8002 \
   --device CUDA0 \
+  --fit off \
   --n-gpu-layers 99 \
   --flash-attn on \
   --ctx-size 8192 \
@@ -19,4 +20,3 @@ exec "$llama_server" \
   --cache-type-v q8_0 \
   --threads 16 \
   --jinja
-

@@ -1,0 +1,14 @@
+0.00.358.891 I log_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.358.913 I device_info:
+0.00.537.621 I   - CUDA0   : NVIDIA GeForce RTX 5090 (32606 MiB, 30927 MiB free)
+0.00.622.400 I   - CUDA1   : NVIDIA GeForce RTX 5080 (16302 MiB, 14953 MiB free)
+0.00.622.433 I   - CPU     : AMD Ryzen 9 7950X 16-Core Processor (90509 MiB, 90509 MiB free)
+0.00.622.563 I system_info: n_threads = 16 (n_threads_batch = 16) / 32 | CUDA : ARCHS = 1200 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | FA_ALL_QUANTS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.00.622.618 I srv          init: running without SSL
+0.00.622.683 I srv          init: using 31 threads for HTTP server
+0.00.622.983 I srv         start: binding port with default address family
+0.00.624.504 I srv  llama_server: loading model
+0.00.624.507 I srv    load_model: loading model '/mnt/d/models/qwen3.8-27b/Q5_K_S/Qwen3.8-27B-Q5_K_S.gguf'
+0.03.759.906 I srv    load_model: [mtmd] estimated worst-case memory usage of mmproj is 1161.02 MiB
+0.03.759.973 I common_init_result: fitting params to device memory ...
+0.03.759.973 I common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)

@@ -43,5 +43,9 @@ for _ in $(seq 1 180); do
 done
 curl -fsS http://127.0.0.1:8002/health >"$result_dir/health.json"
 nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv,noheader >"$result_dir/gpu.csv"
-python3 "$root/scripts/smoke.py" | tee "$result_dir/smoke.json"
-
+test_image="${TEST_IMAGE:-/mnt/c/Users/whyke/Documents/comfy/ComfyUI/input/example.png}"
+smoke_args=(--output "$result_dir/smoke.json")
+if [[ -f "$test_image" ]]; then
+  smoke_args+=(--image "$test_image")
+fi
+python3 "$root/scripts/smoke.py" "${smoke_args[@]}" | tee "$result_dir/smoke.txt"

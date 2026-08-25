@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--base", default="http://127.0.0.1:8002/v1")
     parser.add_argument("--image")
+    parser.add_argument("--output")
     args = parser.parse_args()
 
     tests = [
@@ -31,7 +32,18 @@ def main():
         encoded = base64.b64encode(open(args.image, "rb").read()).decode()
         tests.append(("vision", [{"role": "user", "content": [{"type": "image_url", "image_url": {"url": f"data:{mime};base64,{encoded}"}}, {"type": "text", "text": "客观描述图片，不要猜测看不见的内容。"}]}], None))
 
-    output = {}
+    elapsed, completion = post(args.base.removesuffix("/v1") + "/completion", {
+        "prompt": "Explain why explicit GPU ownership matters when an LLM server and a video diffusion pipeline share one workstation.",
+        "n_predict": 256,
+        "temperature": 0,
+        "cache_prompt": False,
+    })
+    output = {"native_completion": {
+        "elapsed_s": elapsed,
+        "prompt_tok_s": completion.get("timings", {}).get("prompt_per_second"),
+        "decode_tok_s": completion.get("timings", {}).get("predicted_per_second"),
+        "predicted_n": completion.get("tokens_predicted"),
+    }}
     for name, messages, tools in tests:
         payload = {"model": "qwen3.8-27b", "messages": messages, "max_tokens": 768, "temperature": 0.2}
         if tools:
@@ -40,9 +52,12 @@ def main():
         elapsed, data = post(args.base + "/chat/completions", payload)
         output[name] = {"elapsed_s": elapsed, "response": data}
         print(json.dumps({name: output[name]}, ensure_ascii=False, indent=2))
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as handle:
+            json.dump(output, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
     print(json.dumps(output, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
     main()
-

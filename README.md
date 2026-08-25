@@ -28,7 +28,7 @@ The server listens on `127.0.0.1:8002` as `qwen3.8-27b`. The standing `keying-de
 
 ## Status
 
-Repository and test harness created 2026-08-25. See [REPORT.md](REPORT.md) for measured results and known parser/template issues after the run.
+Verified 2026-08-25 on llama.cpp b9733: full single-5090 residency, 63–65 tok/s decode, constrained Chinese and Python passes, valid native tool calling, and a successful image-understanding test. The post-load snapshot used 21,161 MiB on the RTX 5090. See [REPORT.md](REPORT.md) and the checked-in raw results.
 
 ## Sources
 
@@ -36,4 +36,3 @@ Repository and test harness created 2026-08-25. See [REPORT.md](REPORT.md) for m
 - [Official Qwen3.8-27B model card](https://huggingface.co/Qwen/Qwen3.8-27B)
 - [Artificial Analysis small open models](https://artificialanalysis.ai/models/open-source/small)
 - [GGUF artifacts](https://huggingface.co/bartowski/Qwen3.8-27B-GGUF)
-
