@@ -1,0 +1,8 @@
+{
+  "model": "/mnt/d/models/qwen3.8-27b/Q5_K_S/Qwen3.8-27B-Q5_K_S.gguf",
+  "mmproj": "/mnt/d/models/qwen3.8-27b/Q5_K_S/mmproj-Qwen3.8-27B-bf16.gguf",
+  "spec_type": "draft-mtp",
+  "spec_draft_n_max": 3,
+  "batch_size": "default",
+  "ubatch_size": "default"
+}

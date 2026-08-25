@@ -1,0 +1,186 @@
+{
+  "native_completion": {
+    "elapsed_s": 2.825,
+    "prompt_tok_s": 53.401144310235225,
+    "decode_tok_s": 105.44638833762946,
+    "predicted_n": 256
+  },
+  "chinese": {
+    "elapsed_s": 3.104,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "MoE 路由决定每个 token 被发送到哪些专家，从而形成各专家的计算与显存访问压力。  \n负载均衡通过调整路由或容量限制，使专家间的负载尽量均匀，避免热点专家成为瓶颈。  \nCPU 卸载则把部分专家或状态放到 CPU 内存中，以缓解 GPU 显存压力，但会引入数据搬运开销，因此需要与路由和负载均衡策略协同设计。",
+            "reasoning_content": "We need answer in Chinese, exactly three sentences. User: \"用恰好三句话解释 MoE 路由、负载均衡和 CPU 卸载的关系。\" Need explain relationship in exactly three sentences. Need ensure exactly three sentences. Chinese sentences likely end with 。 maybe no abbreviations with periods. Need concise. Need maybe: \"MoE 路由决定每个 token 被发送到哪些专家，从而形成各专家的计算与显存访问压力。负载均衡通过调整路由或容量限制，使专家间的负载尽量均匀，避免热点专家成为瓶颈。CPU 卸载则把部分专家或状态放到 CPU 内存中，以缓解 GPU 显存压力，但会引入数据搬运开销，因此需要与路由和负载均衡策略协同设计。\" Count 3 sentences. Check each ends with 。. Good. Need final only three sentences. Ensure no extra.\n"
+          }
+        }
+      ],
+      "created": 1787636573,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 265,
+        "prompt_tokens": 69,
+        "total_tokens": 334,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-F3iCjYpiX9xbxNrgbGwwtOl1SvKaG5YM",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 69,
+        "prompt_ms": 150.718,
+        "prompt_per_token_ms": 2.18431884057971,
+        "prompt_per_second": 457.80862272588547,
+        "predicted_n": 265,
+        "predicted_ms": 2737.649,
+        "predicted_per_token_ms": 10.330750943396225,
+        "predicted_per_second": 96.798384307119,
+        "draft_n": 216,
+        "draft_n_accepted": 158
+      }
+    }
+  },
+  "code": {
+    "elapsed_s": 6.011,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals = sorted(intervals, key=lambda x: x[0])\n    merged = [list(intervals[0])]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\nassert merge_intervals([]) == []\nassert merge_intervals([[1, 3], [2, 6], [8, 10]]) == [[1, 6], [8, 10]]\nassert merge_intervals([[1, 4], [4, 5]]) == [[1, 5]]",
+            "reasoning_content": "We need answer user in Chinese: \"写 Python 函数 merge_intervals，并给出恰好三个 assert；只输出代码。\" Means write Python function merge_intervals, and give exactly three assert; only output code. Need likely implement merging intervals. Need output only code, no explanation. Need ensure exactly three assert statements. Could include function and three asserts. Need maybe no extra text. Need think about requirements. \"恰好三个 assert\" exactly three assert lines/statements. We can output:\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals = sorted(intervals, key=lambda x: x[0])\n    merged = [list(intervals[0])]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\nassert merge_intervals([]) == []\nassert merge_intervals([[1,3],[2,6],[8,10]]) == [[1,6],[8,10]]\nassert merge_intervals([[1,4],[4,5]]) == [[1,5]]\n\nExactly three assert statements. Need only code. Ensure no comments? okay. Could use tuples? If input lists, output lists. If tests expect tuples? Usually intervals can be list of lists. Could return list of lists. If input tuples, sorted okay, but merged list of lists. Could preserve? Not necessary. But maybe assert with tuples? If function returns lists, assert with lists. Need exactly three assert. Could include type hints? okay. Need only code. Ensure no hidden assert in code? no.\nPotential issue: if intervals are tuples, merged[-1] list, okay. If intervals empty. If intervals contain single? no.\nNeed final only code.\n"
+          }
+        }
+      ],
+      "created": 1787636579,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 570,
+        "prompt_tokens": 69,
+        "total_tokens": 639,
+        "prompt_tokens_details": {
+          "cached_tokens": 42
+        }
+      },
+      "id": "chatcmpl-4dFGLrwQUWRGOwhwVKDhEwCaGgTVRQx5",
+      "timings": {
+        "cache_n": 42,
+        "prompt_n": 27,
+        "prompt_ms": 97.06,
+        "prompt_per_token_ms": 3.5948148148148147,
+        "prompt_per_second": 278.1784463218628,
+        "predicted_n": 570,
+        "predicted_ms": 5650.454,
+        "predicted_per_token_ms": 9.913077192982456,
+        "predicted_per_second": 100.87684989560132,
+        "draft_n": 450,
+        "draft_n_accepted": 344
+      }
+    }
+  },
+  "tool": {
+    "elapsed_s": 1.112,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The user is asking to check the current weather in Toronto. They explicitly stated that I must call the tool and must not guess. Let me call the get_weather tool with city set to \"Toronto\".\n",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_weather",
+                  "arguments": "{\"city\":\"Toronto\"}"
+                },
+                "id": "roCEwqUS2dpFg0We4rzSAA0b76UU7mQK"
+              }
+            ]
+          }
+        }
+      ],
+      "created": 1787636580,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 316,
+        "total_tokens": 385,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-IeR9ayES42RCknOb0Qvrye6DgGJ4wOVe",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 316,
+        "prompt_ms": 260.271,
+        "prompt_per_token_ms": 0.8236424050632912,
+        "prompt_per_second": 1214.1191296763757,
+        "predicted_n": 69,
+        "predicted_ms": 604.535,
+        "predicted_per_token_ms": 8.761376811594202,
+        "predicted_per_second": 114.13731214900709,
+        "draft_n": 50,
+        "draft_n_accepted": 43
+      }
+    }
+  },
+  "vision": {
+    "elapsed_s": 9.009,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "这是一幅由扁平色块构成的数字绘画，边缘带有像素化的锯齿感。\n\n**背景**：画面上半部分为纯蓝色，下半部分为纯绿色，两者之间以一条不规则的横向曲线分隔。蓝色区域的左上角和右上角各有一团白色的云朵状图形。\n\n**人物形象**（位于画面中央）：\n- **头部**：一个米白色的圆形脸。脸上有两个蓝色的圆形眼睛，每个眼睛内含一个黑色的小瞳孔（左侧瞳孔偏圆，右侧瞳孔偏椭圆）。两眼下方有一条向上弯曲的黑色短线。\n- **头部两侧/上方**：一大片黄色的形状向左右两侧上方伸展，轮廓呈尖角与波浪状，左右各有一个浅黄色的椭圆形斑块嵌在其中。\n- **身体**：头部下方连接着一件粉色的连衣裙状色块，上窄下宽，向下展开。\n- **手臂**：从粉色色块的上部两侧水平伸出两条米白色的长条，末端为圆头。\n- **腿部**：从粉色色块的下部伸出两条米白色的长条，向下延伸，末端同样为圆头。\n\n整体由蓝、绿、白、黄、粉、米白、黑等纯色块组成，无渐变、无阴影、无纹理细节。",
+            "reasoning_content": "用户要求客观描述图片，不猜测看不见的内容。我需要仔细观察图像的每个元素，用平实的语言描述颜色、形状、位置，避免赋予角色情感或背景故事。\n\n观察图像：背景上半部分是蓝色，下半部分是绿色，两者之间有一条不规则的分界线，类似天空和草地。蓝色区域左右上角各有一团白色云朵状图形。\n\n中央是一个卡通人物形象。头部是白色/米色的圆形脸，脸上有两个蓝色圆形眼睛，眼睛里有黑色瞳孔（左眼瞳孔偏左，右眼瞳孔偏右，形状略有不同）。眼睛下方有一条黑色的弧线，像是嘴巴。\n\n头部两侧/上方是黄色的头发，向两边展开，形状像翅膀或大蝴蝶结，头发内部还有浅黄色的椭圆形斑块。\n\n身体部分穿着一件粉色的连衣裙，裙子呈梯形/三角形向下展开。裙子两侧伸出两条米色的手臂，水平向两边伸展，末端是圆头。\n\n裙子下方伸出两条米色的腿，向下延伸，末端是圆头，没有明显的脚部细节。\n\n整体风格是简单的数字绘画，边缘呈像素化/锯齿状，像是用绘图软件绘制的扁平色块。\n\n我需要客观描述，不猜测性别、年龄、情绪等。嘴巴是弧线，我可以描述为“黑色弧线”，但通常弧线朝上像微笑，不过为客观起见，我可以说“一条向上弯曲的黑色短线”或“黑色弧线”。我描述形状即可。\n\n我现在组织语言，分层次描述：背景、人物头部、头发、身体四肢、整体风格。\n\n确保不猜测看不见的内容，比如不说是“女孩”“仙女”“蝴蝶”等，只描述形状和颜色。头发形状像翅膀，我可以客观说“向两侧展开的黄色形状，轮廓类似翅膀或蝴蝶结”，但这是比喻，是否算猜测？比喻是描述形状，应该可以，但为安全起见，我可以说“向两侧上方伸展的黄色块状结构，边缘呈波浪/尖角状”。我尽量客观。\n\n最终用中文回答。\n"
+          }
+        }
+      ],
+      "created": 1787636589,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 686,
+        "prompt_tokens": 639,
+        "total_tokens": 1325,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-272PyGsrDJaxlaN0ckiQQoUY85H1zwHM",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 639,
+        "prompt_ms": 895.524,
+        "prompt_per_token_ms": 1.4014460093896715,
+        "prompt_per_second": 713.5487156123119,
+        "predicted_n": 686,
+        "predicted_ms": 7824.445,
+        "predicted_per_token_ms": 11.405896501457725,
+        "predicted_per_second": 87.67395003735089,
+        "draft_n": 622,
+        "draft_n_accepted": 375
+      }
+    }
+  }
+}

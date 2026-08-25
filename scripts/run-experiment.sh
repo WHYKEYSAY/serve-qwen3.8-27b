@@ -8,6 +8,13 @@ mkdir -p "$result_dir"
 restore_122b=0
 server_pid=""
 
+quant="${QUANT:-Q5_K_S}"
+model_path="${MODEL:-${MODEL_DIR:-/mnt/d/models/qwen3.8-27b/$quant}/Qwen3.8-27B-$quant.gguf}"
+mmproj_path="${MMPROJ:-${MODEL_DIR:-/mnt/d/models/qwen3.8-27b/$quant}/mmproj-Qwen3.8-27B-bf16.gguf}"
+printf '{\n  "model": "%s",\n  "mmproj": "%s",\n  "spec_type": "%s",\n  "spec_draft_n_max": %s,\n  "batch_size": "%s",\n  "ubatch_size": "%s"\n}\n' \
+  "$model_path" "$mmproj_path" "${SPEC_TYPE:-draft-mtp}" "${SPEC_DRAFT_N_MAX:-2}" \
+  "${BATCH_SIZE:-default}" "${UBATCH_SIZE:-default}" >"$result_dir/config.json"
+
 cleanup() {
   if [[ -n "$server_pid" ]]; then
     kill "$server_pid" 2>/dev/null || true

@@ -1,0 +1,186 @@
+{
+  "native_completion": {
+    "elapsed_s": 3.805,
+    "prompt_tok_s": 43.726405960117354,
+    "decode_tok_s": 77.10564678385118,
+    "predicted_n": 256
+  },
+  "chinese": {
+    "elapsed_s": 4.155,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "MoE 路由负责把每个 token 分发给少数专家，决定哪些专家被激活。负载均衡通过约束或调整路由，避免少数专家过热，从而稳定训练并让计算更均匀。CPU 卸载把不常用或冷专家放到 CPU/内存以省显存，但路由和负载均衡必须考虑跨设备访问延迟，否则会增加等待时间并降低吞吐。",
+            "reasoning_content": "用户要求：用恰好三句话解释 MoE 路由、负载均衡和 CPU 卸载的关系。需要中文回答，且必须恰好三句话。需要确保三句话，可能用句号分隔。内容要准确：MoE 路由决定 token 去哪些专家；负载均衡防止热门专家过载/训练不稳定，可能影响哪些专家被激活及容量；CPU 卸载将部分专家/参数放 CPU/内存，路由需考虑访问延迟，负载均衡与卸载共同影响性能/显存/吞吐。恰好三句话。避免分号算一句？中文句号、问号、感叹号算句子。可以用三个句号。句子1：MoE 路由负责把每个 token 分发给少数专家，决定哪些专家被激活。句子2：负载均衡通过约束或调整路由，避免少数专家过热，从而稳定训练并让计算更均匀。句子3：CPU 卸载把不常用或冷专家放到 CPU/内存以省显存，但路由和负载均衡必须考虑跨设备访问延迟，否则会增加等待时间并降低吞吐。检查三句。可以。\n"
+          }
+        }
+      ],
+      "created": 1787636771,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 303,
+        "prompt_tokens": 69,
+        "total_tokens": 372,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-lHxjTjNoAkFvNPRYHgHcg1w5ELc7iHWJ",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 69,
+        "prompt_ms": 241.412,
+        "prompt_per_token_ms": 3.4987246376811596,
+        "prompt_per_second": 285.8184348748198,
+        "predicted_n": 303,
+        "predicted_ms": 3666.468,
+        "predicted_per_token_ms": 12.100554455445543,
+        "predicted_per_second": 82.64084126739958,
+        "draft_n": 282,
+        "draft_n_accepted": 163
+      }
+    }
+  },
+  "code": {
+    "elapsed_s": 7.22,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals.sort(key=lambda x: x[0])\n    merged = [list(intervals[0])]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\nassert merge_intervals([[1, 3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]\nassert merge_intervals([]) == []\nassert merge_intervals([[1, 4], [4, 5]]) == [[1, 5]]",
+            "reasoning_content": "We need respond to user: \"写 Python 函数 merge_intervals，并给出恰好三个 assert；只输出代码。\" Chinese: Write Python function merge_intervals, and give exactly three assert; only output code.\nNeed output code only. Need likely define function merging intervals. Exactly three assert statements. Need ensure only code, no explanation. Could include asserts. Need maybe no extra text. Need think about requirements: \"恰好三个 assert\" exactly three assert statements. Could be:\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    for start, end in intervals[1:]:\n        if start <= merged[-1][1]:\n            merged[-1][1] = max(merged[-1][1], end)\n        else:\n            merged.append([start, end])\n    return merged\n\nassert merge_intervals([[1,3],[2,6],[8,10],[15,18]]) == [[1,6],[8,10],[15,18]]\nassert merge_intervals([]) == []\nassert merge_intervals([[1,4],[4,5]]) == [[1,5]]\n\nExactly three assert lines. Need maybe if intervals are tuples? Return lists. Could be okay. Need only code. Ensure no comments? fine. Need maybe assert count exactly three. Use assert statements. Could include function and three asserts. Need no trailing explanation.\nPotential issue: If input intervals are tuples, sorting and returning lists. Asserts compare lists. Good.\nNeed maybe handle nested? no.\nNeed exactly three assert: yes.\nCould there be hidden requirement \"只输出代码\" means no markdown? Probably raw code. We can output code block? \"只输出代码\" maybe code only, no prose. Code block is not code? Better output plain code without markdown fences. But many tasks expect code. To be safe, output just code lines.\nNeed ensure no assert inside function? They likely want three asserts total. Good.\nNeed consider if intervals empty: return [] but if intervals is None? not needed.\nNeed maybe preserve input type? Could return list of lists. Fine.\nNeed exactly three assert statements. Count: three lines starting assert. Good.\nLet's final.\n"
+          }
+        }
+      ],
+      "created": 1787636778,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 677,
+        "prompt_tokens": 69,
+        "total_tokens": 746,
+        "prompt_tokens_details": {
+          "cached_tokens": 42
+        }
+      },
+      "id": "chatcmpl-uoX7BoNHIlgX3vPxTvUIpg13U5kR7nek",
+      "timings": {
+        "cache_n": 42,
+        "prompt_n": 27,
+        "prompt_ms": 122.226,
+        "prompt_per_token_ms": 4.526888888888889,
+        "prompt_per_second": 220.90226302096116,
+        "predicted_n": 677,
+        "predicted_ms": 6865.796,
+        "predicted_per_token_ms": 10.141500738552438,
+        "predicted_per_second": 98.6047357072654,
+        "draft_n": 536,
+        "draft_n_accepted": 408
+      }
+    }
+  },
+  "tool": {
+    "elapsed_s": 1.279,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "tool_calls",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The user is asking for the current weather in Toronto. They explicitly state that I must call the tool and must not guess. Let me call the get_weather tool with city set to \"Toronto\".\n",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_weather",
+                  "arguments": "{\"city\":\"Toronto\"}"
+                },
+                "id": "fZHMqArBkvzvmsysH6618ZcJzQK2nVvf"
+              }
+            ]
+          }
+        }
+      ],
+      "created": 1787636779,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 316,
+        "total_tokens": 384,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-C3dy4HuF6nMBC0mbflGdKi41Gligit44",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 316,
+        "prompt_ms": 408.195,
+        "prompt_per_token_ms": 1.291756329113924,
+        "prompt_per_second": 774.1398106297236,
+        "predicted_n": 68,
+        "predicted_ms": 640.788,
+        "predicted_per_token_ms": 9.423352941176471,
+        "predicted_per_second": 106.11934056193311,
+        "draft_n": 48,
+        "draft_n_accepted": 43
+      }
+    }
+  },
+  "vision": {
+    "elapsed_s": 8.454,
+    "response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "这是一幅色彩平涂的卡通风格数字绘图，画面没有明显的轮廓线，由色块拼接而成。\n\n背景分为上下两部分：上半部为纯蓝色，下半部为纯绿色，二者之间以一条起伏不平的曲线为界。蓝色区域的左上角和右上角各有一团白色的云朵状图形，边缘呈波浪形。\n\n画面中央是一个站立的人形形象。其头部为浅米白色的圆形，脸上并排画着两个蓝色的圆形眼睛，每个眼睛中央有一个黑色小圆点；眼睛下方有一条黑色的短弧线，构成嘴部。头部两侧及上方延伸出大面积的黄色块状结构，向左右上方张开，形似双翼或向两侧翘起的发型，黄色区域内各嵌有一个浅黄色的椭圆形斑块。\n\n形象躯干部分穿着一件粉色的连衣裙，裙身自上而下逐渐变宽，呈梯形。裙子两侧水平伸出两条浅米白色的手臂，臂端为圆头，向左右平展。裙子下方伸出两条浅米白色的腿，向下延伸至画面底部，呈站立姿态。\n\n整体配色为蓝、绿、黄、粉、白、黑的高饱和色块组合，造型简洁。",
+            "reasoning_content": "用户要求客观描述图片，不猜测看不见的内容。我需要仔细观察图像的每一个元素，用平实的语言描述颜色、形状、位置关系，避免赋予角色情感或背景故事。\n\n观察图像：背景上半部分是蓝色，下半部分是绿色，两者之间有一条不规则的边界，类似天空和草地。蓝色区域左右上角各有一团白色的云状图形。\n\n中央是一个卡通人物形象。头部是浅色（米白/淡粉白）的圆形脸，脸上有两个蓝色的圆形眼睛，眼睛里有黑色的小点（瞳孔），下方有一条黑色的弧线作为嘴巴，呈微笑状。\n\n头部两侧/上方延伸出黄色的形状，看起来像头发或翅膀，呈两个向上张开的尖角状，黄色区域内部还有浅黄色的椭圆形斑块。\n\n身体部分穿着一件粉色的连衣裙，裙子呈梯形/三角形向下展开。裙子两侧伸出两条浅色（米白）的手臂，水平向两边伸展，末端是圆头。\n\n裙子下方伸出两条浅色的腿，脚部也是浅色，呈站立姿态。\n\n我需要客观描述，不猜测这是“女孩”还是“精灵”等，但可以说“人物形象”。不过粉色裙子、头发等特征，我可以描述为“穿着粉色裙子的卡通形象”。保持客观。\n\n颜色细节：蓝色眼睛，黑色瞳孔和嘴线，黄色头发/翅膀带浅黄椭圆，粉色裙子，米白色脸、手臂、腿，蓝色背景，绿色地面，白色云。\n\n我应组织成连贯的段落，客观陈述。\n"
+          }
+        }
+      ],
+      "created": 1787636788,
+      "model": "qwen3.8-27b",
+      "system_fingerprint": "b9733-f449e0553",
+      "object": "chat.completion",
+      "usage": {
+        "completion_tokens": 555,
+        "prompt_tokens": 639,
+        "total_tokens": 1194,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "id": "chatcmpl-cZRDRZ9TS4D8uzuVSdAOs6oyb1mSm9E4",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 639,
+        "prompt_ms": 1020.795,
+        "prompt_per_token_ms": 1.597488262910798,
+        "prompt_per_second": 625.9826899622353,
+        "predicted_n": 555,
+        "predicted_ms": 7184.982,
+        "predicted_per_token_ms": 12.945913513513513,
+        "predicted_per_second": 77.24445238693708,
+        "draft_n": 522,
+        "draft_n_accepted": 295
+      }
+    }
+  }
+}

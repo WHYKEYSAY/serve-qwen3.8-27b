@@ -1,0 +1,169 @@
+0.00.307.298 I log_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.307.357 I device_info:
+0.00.567.606 I   - CUDA0   : NVIDIA GeForce RTX 5090 (32606 MiB, 30927 MiB free)
+0.00.666.911 I   - CUDA1   : NVIDIA GeForce RTX 5080 (16302 MiB, 14953 MiB free)
+0.00.666.955 I   - CPU     : AMD Ryzen 9 7950X 16-Core Processor (90509 MiB, 90509 MiB free)
+0.00.667.161 I system_info: n_threads = 16 (n_threads_batch = 16) / 32 | CUDA : ARCHS = 1200 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | FA_ALL_QUANTS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.00.667.290 I srv          init: running without SSL
+0.00.667.391 I srv          init: using 31 threads for HTTP server
+0.00.667.747 I srv         start: binding port with default address family
+0.00.674.083 I srv  llama_server: loading model
+0.00.674.159 I srv    load_model: loading model '/mnt/d/models/qwen3.8-27b/Q5_K_S/Qwen3.8-27B-Q5_K_S.gguf'
+1.37.783.668 W llama_context: n_ctx_seq (8192) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+1.37.822.553 I common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+1.37.942.175 I srv    load_model: creating MTP draft context against the target model '/mnt/d/models/qwen3.8-27b/Q5_K_S/Qwen3.8-27B-Q5_K_S.gguf'
+1.37.942.258 W llama_context: n_ctx_seq (8192) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+1.37.973.382 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+1.37.973.405 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+1.37.973.406 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+1.42.587.587 I srv    load_model: loaded multimodal model, '/mnt/d/models/qwen3.8-27b/Q5_K_S/mmproj-Qwen3.8-27B-bf16.gguf'
+1.42.587.624 I srv    load_model: initializing slots, n_slots = 1
+1.42.607.513 I common_context_can_seq_rm: the context supports bounded partial sequence removal
+1.42.625.182 I common_speculative_impl_draft_mtp: adding speculative implementation 'draft-mtp'
+1.42.625.207 I common_speculative_impl_draft_mtp: - n_max=2, n_min=0, p_min=0.00, n_embd=5120, backend_sampling=1
+1.42.625.208 I common_speculative_impl_draft_mtp: - gpu_layers=-1, cache_k=f16, cache_v=f16, ctx_tgt=yes, ctx_dft=yes, devices=[default]
+1.42.666.325 I srv    load_model: speculative decoding context initialized
+1.42.666.351 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 8192
+1.42.666.425 I srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+1.42.666.425 I srv    load_model: use `--cache-ram 0` to disable the prompt cache
+1.42.666.426 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+1.42.666.426 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 256
+1.42.666.447 I srv          init: idle slots will be saved to prompt cache upon starting a new task
+1.42.681.498 I init: chat template, example_format: '<|im_start|>system
+Reasoning effort is set to xhigh. Please think carefully through the task, validate key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.
+
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+<think>
+'
+1.42.692.740 I srv          init: init: chat template, thinking = 1
+1.42.692.842 I srv  llama_server: model loaded
+1.42.692.846 I srv  llama_server: server is listening on http://127.0.0.1:8002
+1.42.692.858 I srv  update_slots: all slots are idle
+1.46.335.967 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+1.46.335.989 I srv  get_availabl: updating prompt cache
+1.46.335.999 I srv          load:  - looking for better prompt, base f_keep = -1.000, sim = 0.000
+1.46.336.005 I srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 8192 tokens, 8589934592 est)
+1.46.336.005 I srv  get_availabl: prompt cache update took 0.01 ms
+1.46.336.067 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+1.46.672.031 I slot create_check: id  0 | task 0 | created context checkpoint 1 of 32 (pos_min = 16, pos_max = 16, n_tokens = 17, size = 149.693 MiB)
+1.49.475.149 I slot print_timing: id  0 | task 0 | prompt eval time =     376.71 ms /    21 tokens (   17.94 ms per token,    55.75 tokens per second)
+1.49.475.180 I slot print_timing: id  0 | task 0 |        eval time =    2762.32 ms /   256 tokens (   10.79 ms per token,    92.68 tokens per second)
+1.49.475.181 I slot print_timing: id  0 | task 0 |       total time =    3139.03 ms /   277 tokens
+1.49.475.188 I slot print_timing: id  0 | task 0 |    graphs reused =        120
+1.49.475.191 I slot print_timing: id  0 | task 0 | draft acceptance = 0.54733 (  133 accepted /   243 generated), mean acceptance length =  2.09, acceptance rate per position = (0.689, 0.402)
+1.49.475.224 I statistics        draft-mtp: #calls(b,g,a) =    1    122    122, #gen drafts =    122, #acc drafts =    84, #gen tokens =    243, #acc tokens =   133, #mean acc len = 2.09, #acc rate/pos = (0.689, 0.402), dur(b,g,a) = 0.005, 401.321, 0.247 ms
+1.49.475.280 I slot      release: id  0 | task 0 | stop processing: n_tokens = 276, truncated = 0
+1.49.475.292 I srv  update_slots: all slots are idle
+1.49.488.771 I srv    operator(): Chat format: peg-native
+1.49.489.161 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 66269324881
+1.49.489.161 I srv  get_availabl: updating prompt cache
+1.49.489.209 W srv   prompt_save:  - saving prompt with length 276, total state size = 159.879 MiB (draft: 1.083 MiB)
+1.49.664.470 I srv          load:  - looking for better prompt, base f_keep = 0.000, sim = 0.000
+1.49.664.495 I srv        update:  - cache state: 1 prompts, 309.572 MiB (limits: 8192.000 MiB, 8192 tokens, 8192 est)
+1.49.664.496 I srv        update:    - prompt 0x560315c27900:     276 tokens, checkpoints:  1,   309.572 MiB
+1.49.664.497 I srv  get_availabl: prompt cache update took 175.34 ms
+1.49.664.614 I slot launch_slot_: id  0 | task 125 | processing task, is_child = 0
+1.49.664.628 W slot update_slots: id  0 | task 125 | erased invalidated context checkpoint (pos_min = 16, pos_max = 16, n_tokens = 17, n_swa = 0, pos_next = 0, size = 149.693 MiB)
+1.49.738.682 I slot create_check: id  0 | task 125 | created context checkpoint 1 of 32 (pos_min = 41, pos_max = 41, n_tokens = 42, size = 149.791 MiB)
+1.52.813.173 I slot print_timing: id  0 | task 125 | n_decoded =    295, tg =  98.19 t/s, tg_3s =  98.18 t/s
+1.53.117.303 I slot print_timing: id  0 | task 125 | prompt eval time =     143.99 ms /    69 tokens (    2.09 ms per token,   479.20 tokens per second)
+1.53.117.333 I slot print_timing: id  0 | task 125 |        eval time =    3308.65 ms /   336 tokens (    9.85 ms per token,   101.55 tokens per second)
+1.53.117.333 I slot print_timing: id  0 | task 125 |       total time =    3452.64 ms /   405 tokens
+1.53.117.335 I slot print_timing: id  0 | task 125 |    graphs reused =        269
+1.53.117.338 I slot print_timing: id  0 | task 125 | draft acceptance = 0.61258 (  185 accepted /   302 generated), mean acceptance length =  2.23, acceptance rate per position = (0.735, 0.490)
+1.53.117.359 I statistics        draft-mtp: #calls(b,g,a) =    2    273    273, #gen drafts =    273, #acc drafts =   195, #gen tokens =    545, #acc tokens =   318, #mean acc len = 2.16, #acc rate/pos = (0.714, 0.451), dur(b,g,a) = 0.007, 872.103, 0.502 ms
+1.53.117.411 I slot      release: id  0 | task 125 | stop processing: n_tokens = 405, truncated = 0
+1.53.117.429 I srv  update_slots: all slots are idle
+1.53.131.731 I srv    operator(): Chat format: peg-native
+1.53.132.062 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, sim_best = 0.652 (> 0.100 thold), f_keep = 0.111
+1.53.132.063 I srv  get_availabl: updating prompt cache
+1.53.132.109 W srv   prompt_save:  - saving prompt with length 405, total state size = 164.671 MiB (draft: 1.590 MiB)
+1.53.304.896 I srv          load:  - looking for better prompt, base f_keep = 0.111, sim = 0.652
+1.53.304.928 I srv        update:  - cache state: 2 prompts, 624.035 MiB (limits: 8192.000 MiB, 8192 tokens, 8939 est)
+1.53.304.929 I srv        update:    - prompt 0x560315c27900:     276 tokens, checkpoints:  1,   309.572 MiB
+1.53.304.930 I srv        update:    - prompt 0x56031635d550:     405 tokens, checkpoints:  1,   314.462 MiB
+1.53.304.931 I srv  get_availabl: prompt cache update took 172.87 ms
+1.53.305.045 I slot launch_slot_: id  0 | task 280 | processing task, is_child = 0
+1.53.305.060 I slot update_slots: id  0 | task 280 | Checking checkpoint with [41, 41] against 45...
+1.53.323.121 W slot update_slots: id  0 | task 280 | restored context checkpoint (pos_min = 41, pos_max = 41, n_tokens = 42, n_past = 42, size = 149.791 MiB)
+1.56.407.792 I slot print_timing: id  0 | task 280 | n_decoded =    324, tg = 107.73 t/s, tg_3s = 107.72 t/s
+1.58.979.533 I slot print_timing: id  0 | task 280 | prompt eval time =      95.07 ms /    27 tokens (    3.52 ms per token,   284.00 tokens per second)
+1.58.979.566 I slot print_timing: id  0 | task 280 |        eval time =    5579.38 ms /   631 tokens (    8.84 ms per token,   113.10 tokens per second)
+1.58.979.566 I slot print_timing: id  0 | task 280 |       total time =    5674.45 ms /   658 tokens
+1.58.979.568 I slot print_timing: id  0 | task 280 |    graphs reused =        513
+1.58.979.571 I slot print_timing: id  0 | task 280 | draft acceptance = 0.77733 (  384 accepted /   494 generated), mean acceptance length =  2.55, acceptance rate per position = (0.850, 0.704)
+1.58.979.591 I statistics        draft-mtp: #calls(b,g,a) =    3    520    520, #gen drafts =    520, #acc drafts =   405, #gen tokens =   1039, #acc tokens =   702, #mean acc len = 2.35, #acc rate/pos = (0.779, 0.571), dur(b,g,a) = 0.043, 1699.193, 0.942 ms
+1.58.979.639 I slot      release: id  0 | task 280 | stop processing: n_tokens = 700, truncated = 0
+1.58.979.659 I srv  update_slots: all slots are idle
+1.58.995.590 I srv    operator(): Chat format: peg-native
+1.58.996.473 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, sim_best = 0.127 (> 0.100 thold), f_keep = 0.057
+1.58.996.488 I srv  get_availabl: updating prompt cache
+1.58.996.549 W srv   prompt_save:  - saving prompt with length 700, total state size = 175.630 MiB (draft: 2.748 MiB)
+1.59.186.827 I srv          load:  - looking for better prompt, base f_keep = 0.057, sim = 0.127
+1.59.186.858 I srv        update:  - cache state: 3 prompts, 949.455 MiB (limits: 8192.000 MiB, 8192 tokens, 11915 est)
+1.59.186.859 I srv        update:    - prompt 0x560315c27900:     276 tokens, checkpoints:  1,   309.572 MiB
+1.59.186.860 I srv        update:    - prompt 0x56031635d550:     405 tokens, checkpoints:  1,   314.462 MiB
+1.59.186.861 I srv        update:    - prompt 0x560315c043c0:     700 tokens, checkpoints:  1,   325.421 MiB
+1.59.186.861 I srv  get_availabl: prompt cache update took 190.37 ms
+1.59.187.168 I reasoning-budget: activated, budget=2147483647 tokens
+1.59.187.361 I slot launch_slot_: id  0 | task 530 | processing task, is_child = 0
+1.59.187.375 I slot update_slots: id  0 | task 530 | Checking checkpoint with [41, 41] against 40...
+1.59.187.376 W slot update_slots: id  0 | task 530 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+1.59.187.378 W slot update_slots: id  0 | task 530 | erased invalidated context checkpoint (pos_min = 41, pos_max = 41, n_tokens = 42, n_swa = 0, pos_next = 0, size = 149.791 MiB)
+1.59.338.657 I slot create_check: id  0 | task 530 | created context checkpoint 1 of 32 (pos_min = 292, pos_max = 292, n_tokens = 293, size = 150.776 MiB)
+1.59.668.365 I reasoning-budget: deactivated (natural end)
+1.59.929.167 I slot print_timing: id  0 | task 530 | prompt eval time =     220.60 ms /   316 tokens (    0.70 ms per token,  1432.46 tokens per second)
+1.59.929.213 I slot print_timing: id  0 | task 530 |        eval time =     521.16 ms /    53 tokens (    9.83 ms per token,   101.70 tokens per second)
+1.59.929.214 I slot print_timing: id  0 | task 530 |       total time =     741.76 ms /   369 tokens
+1.59.929.215 I slot print_timing: id  0 | task 530 |    graphs reused =        532
+1.59.929.220 I slot print_timing: id  0 | task 530 | draft acceptance = 0.85000 (   34 accepted /    40 generated), mean acceptance length =  2.70, acceptance rate per position = (0.950, 0.750)
+1.59.929.245 I statistics        draft-mtp: #calls(b,g,a) =    4    540    540, #gen drafts =    540, #acc drafts =   424, #gen tokens =   1079, #acc tokens =   736, #mean acc len = 2.36, #acc rate/pos = (0.785, 0.578), dur(b,g,a) = 0.044, 1765.452, 0.981 ms
+1.59.929.638 I slot      release: id  0 | task 530 | stop processing: n_tokens = 370, truncated = 0
+1.59.929.658 I srv  update_slots: all slots are idle
+1.59.959.211 I srv    operator(): Chat format: peg-native
+1.59.959.923 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 66279779239
+1.59.959.938 I srv  get_availabl: updating prompt cache
+1.59.959.988 W srv   prompt_save:  - saving prompt with length 370, total state size = 163.371 MiB (draft: 1.452 MiB)
+2.00.166.639 I srv          load:  - looking for better prompt, base f_keep = 0.108, sim = 0.063
+2.00.166.670 I srv        update:  - cache state: 4 prompts, 1263.603 MiB (limits: 8192.000 MiB, 8192 tokens, 11351 est)
+2.00.166.672 I srv        update:    - prompt 0x560315c27900:     276 tokens, checkpoints:  1,   309.572 MiB
+2.00.166.672 I srv        update:    - prompt 0x56031635d550:     405 tokens, checkpoints:  1,   314.462 MiB
+2.00.166.673 I srv        update:    - prompt 0x560315c043c0:     700 tokens, checkpoints:  1,   325.421 MiB
+2.00.166.673 I srv        update:    - prompt 0x560304f03da0:     370 tokens, checkpoints:  1,   314.147 MiB
+2.00.166.674 I srv  get_availabl: prompt cache update took 206.74 ms
+2.00.166.845 I slot launch_slot_: id  0 | task 554 | processing task, is_child = 0
+2.00.166.863 I slot update_slots: id  0 | task 554 | Checking checkpoint with [292, 292] against 40...
+2.00.166.864 W slot update_slots: id  0 | task 554 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+2.00.166.865 W slot update_slots: id  0 | task 554 | erased invalidated context checkpoint (pos_min = 292, pos_max = 292, n_tokens = 293, n_swa = 0, pos_next = 0, size = 150.776 MiB)
+2.00.244.246 I slot create_check: id  0 | task 554 | created context checkpoint 1 of 32 (pos_min = 41, pos_max = 41, n_tokens = 42, size = 149.791 MiB)
+2.00.276.627 I slot process_mtmd: id  0 | task 554 | encoding mtmd batch from idx = 46, n_chunks = 1
+2.00.480.387 W find_slot: non-consecutive token position 46 after 45 for sequence 0 with 512 new tokens
+2.00.480.436 W find_slot: non-consecutive token position 46 after 46 for sequence 0 with 64 new tokens
+2.00.480.645 W find_slot: non-consecutive token position 46 after 45 for sequence 0 with 512 new tokens
+2.00.571.024 W find_slot: non-consecutive token position 46 after 46 for sequence 0 with 64 new tokens
+2.00.650.148 W find_slot: non-consecutive token position 82 after 46 for sequence 0 with 13 new tokens
+2.00.650.210 W find_slot: non-consecutive token position 82 after 46 for sequence 0 with 13 new tokens
+2.00.804.291 I slot create_check: id  0 | task 554 | created context checkpoint 2 of 32 (pos_min = 82, pos_max = 82, n_tokens = 635, size = 149.858 MiB)
+2.03.860.855 I slot print_timing: id  0 | task 554 | n_decoded =    287, tg =  94.95 t/s, tg_3s =  94.95 t/s
+2.06.874.867 I slot print_timing: id  0 | task 554 | n_decoded =    577, tg =  95.58 t/s, tg_3s =  96.22 t/s
+2.07.117.046 I slot print_timing: id  0 | task 554 | prompt eval time =     671.40 ms /   639 tokens (    1.05 ms per token,   951.74 tokens per second)
+2.07.117.075 I slot print_timing: id  0 | task 554 |        eval time =    6278.74 ms /   600 tokens (   10.46 ms per token,    95.56 tokens per second)
+2.07.117.076 I slot print_timing: id  0 | task 554 |       total time =    6950.14 ms /  1239 tokens
+2.07.117.078 I slot print_timing: id  0 | task 554 |    graphs reused =        802
+2.07.117.081 I slot print_timing: id  0 | task 554 | draft acceptance = 0.59890 (  327 accepted /   546 generated), mean acceptance length =  2.20, acceptance rate per position = (0.751, 0.447)
+2.07.117.109 I statistics        draft-mtp: #calls(b,g,a) =    5    813    813, #gen drafts =    813, #acc drafts =   629, #gen tokens =   1625, #acc tokens =  1063, #mean acc len = 2.31, #acc rate/pos = (0.774, 0.534), dur(b,g,a) = 0.045, 2716.317, 1.655 ms
+2.07.117.166 I slot      release: id  0 | task 554 | stop processing: n_tokens = 1239, truncated = 0
+2.07.117.201 I srv  update_slots: all slots are idle
+2.07.129.265 I srv    operator(): operator(): cleaning up before exit...
