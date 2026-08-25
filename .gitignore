@@ -1,0 +1,4 @@
+results/*.json
+results/*.log
+*.gguf
+__pycache__/
