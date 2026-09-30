@@ -2,6 +2,18 @@
 
 Reproducible local serving and benchmark playbook for Qwen3.8-27B on an RTX 5090.
 
+## New: tested 256K NInfer profile
+
+The separate [256K profile](docs/256k-ninfer.md) uses mixed NVFP4 weights,
+K8V4 KV and MTP3 on one RTX5090. Measured with257760 input tokens:
+**103.10 tokens/s** for1530 natural-EOS output tokens. A260800-input tool
+fixture also passed the documented development checks. These are not8K results
+or proof of general research quality. The existing8K `scripts/serve.sh` is unchanged.
+
+See the profile for artifact/source pins, setup, interface limitations and the
+Q4/Q5/SGLang/vLLM comparison. No weights, compiled binaries or runtime caches
+are included with this new profile.
+
 ## Why this model
 
 Qwen3.8-27B is the only newly released open model near the top of the current intelligence leaderboard that is also physically sensible on one 32 GB consumer GPU. It is a dense 27B multimodal model with 256K native context, tool use, and Apache-2.0 weights.
